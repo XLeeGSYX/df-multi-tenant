@@ -1,0 +1,18 @@
+[project]
+name = "tenancy-core"
+version = "0.1.0"
+description = "Tenant identity, ContextVar context, pure-ASGI middleware and JWT verification for the DeerFlow multi-tenant stack"
+requires-python = ">=3.12"
+dependencies = [
+    # RS256 verification needs the cryptography extra; HS256 needs nothing extra.
+    "pyjwt[crypto]>=2.8.0",
+    # JWKS retrieval for RS256 verification (cached; only fetched on key rotation).
+    "httpx>=0.27.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tenancy"]

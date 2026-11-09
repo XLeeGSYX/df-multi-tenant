@@ -1,0 +1,35 @@
+[project]
+name = "df-multitenant"
+version = "0.1.0"
+description = "Multi-tenant layer for DeerFlow: empty-project architecture, deerflow pinned as a read-only upstream dependency, monkey-patch + dependency injection (design doc §9)"
+requires-python = ">=3.12"
+dependencies = [
+    # Workspace members must be real deps of the root project for `uv sync`
+    # to install them into the root venv (membership alone does not).
+    "tenancy-core",
+    "tenant-db",
+    "deerflow-patches",
+]
+
+[tool.uv.sources]
+tenancy-core = { workspace = true }
+tenant-db = { workspace = true }
+deerflow-patches = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "httpx>=0.27.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    "pyjwt[crypto]>=2.8.0",
+    "sqlalchemy>=2.0.0",
+]
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# deerflow-dependent tests self-skip via importorskip when deerflow is absent.
+addopts = "-q"

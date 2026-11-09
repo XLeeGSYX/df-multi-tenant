@@ -1,0 +1,33 @@
+# Runtime state (never commit tenant data, keys, or the admin DB)
+.foundation/
+.foundation-test/
+.runtime/
+.secrets/
+.trash/
+
+# Local deployment config copied from the pinned checkout (contains model keys)
+config.yaml
+extensions_config.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+uv.lock
+
+# uv workspace lock is regenerated per machine; the pin that matters is
+# upstream/PIN.md (deerflow is consumed from the read-only checkout, not PyPI)
+
+# Frontend (pnpm/Vite)
+frontend/node_modules/
+frontend/dist/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# TypeScript incremental build cache
+frontend/tsconfig.tsbuildinfo

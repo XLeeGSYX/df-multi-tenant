@@ -1,0 +1,4 @@
+# pnpm 10+ 设置项（approve-builds 落盘处）。
+# esbuild 安装脚本用于放置平台二进制，vite 构建依赖它。
+allowBuilds:
+  esbuild: true

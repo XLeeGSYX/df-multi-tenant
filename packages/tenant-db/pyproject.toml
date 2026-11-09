@@ -1,0 +1,19 @@
+[project]
+name = "tenant-db"
+version = "0.1.0"
+description = "Tenant-scoped business models, ORM tenancy enforcement and directory provisioning for the DeerFlow multi-tenant stack"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy>=2.0.0",
+    "tenancy-core",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tenant_db"]
+
+[tool.uv.sources]
+tenancy-core = { workspace = true }
